@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="dride_blue_deep">#FF064191</color>
+    <color name="dride_blue_primary">#FF0D5BD6</color>
+    <color name="dride_blue_accent">#FF3B82F6</color>
+    <color name="dride_blue_surface">#FFF3F7FF</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+</resources>

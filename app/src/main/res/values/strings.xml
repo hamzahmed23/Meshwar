@@ -1,0 +1,80 @@
+<resources>
+    <string name="app_name">D-RIDE</string>
+    <string name="brand_name_arabic">دي رايد</string>
+    <string name="splash_tagline">مشوارك بسعرك في ديروط</string>
+    <string name="splash_subtitle">توصيل سريع وآمن • توك توك • موتوسيكل • سيارة</string>
+    <string name="launch_region_badge">ديروط • محافظة أسيوط</string>
+    <string name="currency_egp">ج.م</string>
+    <string name="payment_cash_only">الدفع نقداً</string>
+    <string name="splash_loading_status">جاري تجهيز رحلتك…</string>
+    <string name="splash_ready_status">جاهز لرحلتك في ديروط • انطلق الآن</string>
+
+    <!-- Content descriptions -->
+    <string name="cd_dride_logo">شعار تطبيق D-RIDE</string>
+    <string name="cd_region_icon">أيقونة موقع الانطلاق في ديروط</string>
+    <string name="cd_vehicle_tuktuk">توك توك</string>
+    <string name="cd_vehicle_motorcycle">موتوسيكل</string>
+    <string name="cd_vehicle_car">سيارة</string>
+    <string name="cd_user_avatar">صورة الحساب</string>
+    <string name="cd_my_location">موقعي الحالي</string>
+    <string name="cd_call_action">اتصال هاتفي</string>
+
+    <!-- Vehicle descriptions -->
+    <string name="vehicle_tuktuk_desc">مناسب للشوارع الداخلية</string>
+    <string name="vehicle_motorcycle_desc">أسرع وصول للمشاوير الفردية</string>
+    <string name="vehicle_car_desc">راحة ومساحة للعائلات</string>
+
+    <!-- Auth & Onboarding -->
+    <string name="auth_welcome_title">مرحباً بك في D-RIDE</string>
+    <string name="auth_welcome_subtitle">حدد مكانك، اقترح سعرك، واختر العرض الأنسب لك في ديروط</string>
+    <string name="auth_google_button">تسجيل الدخول بحساب Google</string>
+    <string name="auth_security_note">حساب آمن وموثق لحماية الركاب والسائقين</string>
+    <string name="onboarding_title">استكمال بيانات الحساب</string>
+    <string name="onboarding_subtitle">أضف اسمك ورقم هاتفك للتواصل أثناء الرحلات في ديروط</string>
+    <string name="label_full_name">الاسم الكامل</string>
+    <string name="label_phone_number">رقم الهاتف المصري</string>
+    <string name="btn_pick_photo">اختيار صورة شخصية</string>
+    <string name="btn_save_and_continue">حفظ والمتابعة</string>
+    <string name="btn_logout">تسجيل الخروج</string>
+
+    <!-- Modes & Navigation -->
+    <string name="mode_passenger">وضع الراكب</string>
+    <string name="mode_driver">وضع السائق</string>
+    <string name="mode_admin">لوحة الإدارة</string>
+    <string name="nav_home">الرئيسية</string>
+    <string name="nav_history">رحلاتي</string>
+    <string name="nav_profile">حسابي</string>
+    <string name="nav_driver_requests">الطلبات</string>
+    <string name="nav_driver_earnings">الأرباح</string>
+    <string name="nav_driver_profile">ملف السائق</string>
+
+    <!-- Passenger Home & Matching -->
+    <string name="search_place_hint">ابحث عن مكان في ديروط…</string>
+    <string name="label_pickup">نقطة الانطلاق</string>
+    <string name="label_destination">الوجهة المطلوبة</string>
+    <string name="label_proposed_fare">السعر المقترح (ج.م)</string>
+    <string name="btn_request_ride">إرسال طلب الرحلة</string>
+    <string name="matching_title">جاري البحث عن سائقين قريبين</string>
+    <string name="matching_subtitle">تصل العروض والأسعار المقترحة من السائقين لحظياً</string>
+    <string name="btn_accept_offer">قبول العرض</string>
+    <string name="btn_reject_offer">رفض</string>
+    <string name="btn_cancel_ride">إلغاء الرحلة</string>
+
+    <!-- Active & Completion -->
+    <string name="label_agreed_fare">الأجرة المتفق عليها</string>
+    <string name="btn_call">اتصال</string>
+    <string name="btn_whatsapp">واتساب</string>
+    <string name="btn_report_complaint">تقديم شكوى</string>
+    <string name="completion_title">وصلت بالسلامة</string>
+    <string name="completion_confirm_btn">تأكيد التقييم وحفظ الرحلة</string>
+
+    <!-- Driver -->
+    <string name="driver_reg_title">التسجيل كسائق في D-RIDE</string>
+    <string name="driver_pending_title">طلبك قيد المراجعة</string>
+    <string name="driver_pending_desc">لا يمكنك استقبال طلبات الرحلات قبل موافقة الإدارة على مستنداتك.</string>
+    <string name="driver_online">متاح لاستقبال الطلبات</string>
+    <string name="driver_offline">غير متاح</string>
+    <string name="btn_accept_proposed_fare">قبول السعر</string>
+    <string name="btn_counteroffer">تقديم سعر بديل</string>
+    <string name="btn_decline">تجاهل</string>
+</resources>

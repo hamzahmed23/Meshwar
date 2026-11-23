@@ -1,0 +1,281 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "Authenticated user account and passenger profile for D-RIDE.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "fullName": { "type": "string" },
+        "phone": { "type": "string" },
+        "email": { "type": "string" },
+        "photoBase64": { "type": "string" },
+        "activeMode": { "type": "string", "enum": ["passenger", "driver", "admin"] },
+        "roles": { "type": "array" },
+        "ratingAvg": { "type": "number" },
+        "ratingCount": { "type": "integer" },
+        "completedRidesCount": { "type": "integer" },
+        "suspended": { "type": "boolean" },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Server timestamp via FieldValue.serverTimestamp()" },
+        "updatedAt": { "type": "string", "format": "date-time", "description": "Server timestamp via FieldValue.serverTimestamp()" }
+      },
+      "required": ["userId", "fullName", "activeMode", "roles", "ratingAvg", "ratingCount", "completedRidesCount", "suspended", "createdAt", "updatedAt"]
+    },
+    "SavedFavoritePlace": {
+      "title": "SavedFavoritePlace",
+      "description": "User-saved favorite pickup/destination locations in Dayrout synced per account.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "placeKey": { "type": "string" },
+        "label": { "type": "string" },
+        "address": { "type": "string" },
+        "latitude": { "type": "number" },
+        "longitude": { "type": "number" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "placeKey", "label", "address", "latitude", "longitude", "createdAt", "updatedAt"]
+    },
+    "DriverProfile": {
+      "title": "DriverProfile",
+      "description": "Driver registration, national ID, vehicle information, documents, and admin approval status.",
+      "type": "object",
+      "properties": {
+        "driverId": { "type": "string" },
+        "fullName": { "type": "string" },
+        "phone": { "type": "string" },
+        "nationalId": { "type": "string" },
+        "vehicleCategory": { "type": "string", "enum": ["tuk_tuk", "motorcycle", "car"] },
+        "vehicleModel": { "type": "string" },
+        "vehicleColor": { "type": "string" },
+        "vehiclePlate": { "type": "string" },
+        "profilePhotoBase64": { "type": "string" },
+        "nationalIdPhotoBase64": { "type": "string" },
+        "licensePhotoBase64": { "type": "string" },
+        "approvalStatus": { "type": "string", "enum": ["pending_review", "approved", "rejected", "suspended"] },
+        "rejectionReason": { "type": "string" },
+        "online": { "type": "boolean" },
+        "completedRidesCount": { "type": "integer" },
+        "totalGrossEgp": { "type": "number" },
+        "totalCommissionEgp": { "type": "number" },
+        "totalNetEgp": { "type": "number" },
+        "ratingAvg": { "type": "number" },
+        "ratingCount": { "type": "integer" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["driverId", "fullName", "phone", "nationalId", "vehicleCategory", "vehicleModel", "vehicleColor", "vehiclePlate", "approvalStatus", "online", "completedRidesCount", "totalGrossEgp", "totalCommissionEgp", "totalNetEgp", "ratingAvg", "ratingCount", "createdAt", "updatedAt"]
+    },
+    "DriverPresence": {
+      "title": "DriverPresence",
+      "description": "Non-PII live driver coordinates and online availability in Dayrout.",
+      "type": "object",
+      "properties": {
+        "driverId": { "type": "string" },
+        "cityId": { "type": "string" },
+        "vehicleCategory": { "type": "string", "enum": ["tuk_tuk", "motorcycle", "car"] },
+        "online": { "type": "boolean" },
+        "latitude": { "type": "number" },
+        "longitude": { "type": "number" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["driverId", "cityId", "vehicleCategory", "online", "latitude", "longitude", "updatedAt"]
+    },
+    "Ride": {
+      "title": "Ride",
+      "description": "Ride request, agreed fare, controlled status lifecycle, and completion summary.",
+      "type": "object",
+      "properties": {
+        "passengerId": { "type": "string" },
+        "passengerName": { "type": "string" },
+        "cityId": { "type": "string" },
+        "pickupAddress": { "type": "string" },
+        "pickupLat": { "type": "number" },
+        "pickupLng": { "type": "number" },
+        "destinationAddress": { "type": "string" },
+        "destinationLat": { "type": "number" },
+        "destinationLng": { "type": "number" },
+        "distanceKm": { "type": "number" },
+        "vehicleCategory": { "type": "string", "enum": ["tuk_tuk", "motorcycle", "car"] },
+        "paymentMethod": { "type": "string", "enum": ["cash"] },
+        "proposedFareEgp": { "type": "number" },
+        "agreedFareEgp": { "type": "number" },
+        "status": { "type": "string", "enum": ["requested", "searching", "offer_selected", "driver_arriving", "driver_arrived", "in_progress", "completed", "cancelled", "disputed"] },
+        "assignedDriverId": { "type": "string" },
+        "assignedDriverName": { "type": "string" },
+        "assignedDriverVehicle": { "type": "string" },
+        "assignedDriverPlate": { "type": "string" },
+        "assignedDriverRating": { "type": "number" },
+        "driverLat": { "type": "number" },
+        "driverLng": { "type": "number" },
+        "commissionRatePercent": { "type": "number" },
+        "commissionAmountEgp": { "type": "number" },
+        "driverNetEgp": { "type": "number" },
+        "passengerRating": { "type": "integer" },
+        "passengerFeedback": { "type": "string" },
+        "participantUids": { "type": "array" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["passengerId", "passengerName", "cityId", "pickupAddress", "pickupLat", "pickupLng", "destinationAddress", "destinationLat", "destinationLng", "distanceKm", "vehicleCategory", "paymentMethod", "proposedFareEgp", "status", "participantUids", "createdAt", "updatedAt"]
+    },
+    "RideOffer": {
+      "title": "RideOffer",
+      "description": "Driver acceptance or counteroffer for a searching ride.",
+      "type": "object",
+      "properties": {
+        "rideId": { "type": "string" },
+        "passengerId": { "type": "string" },
+        "driverId": { "type": "string" },
+        "driverName": { "type": "string" },
+        "driverRating": { "type": "number" },
+        "vehicleCategory": { "type": "string", "enum": ["tuk_tuk", "motorcycle", "car"] },
+        "vehicleSummary": { "type": "string" },
+        "vehiclePlate": { "type": "string" },
+        "offeredFareEgp": { "type": "number" },
+        "counterOffer": { "type": "boolean" },
+        "status": { "type": "string", "enum": ["pending", "accepted", "rejected", "withdrawn"] },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["rideId", "passengerId", "driverId", "driverName", "driverRating", "vehicleCategory", "vehicleSummary", "vehiclePlate", "offeredFareEgp", "counterOffer", "status", "createdAt", "updatedAt"]
+    },
+    "RideContact": {
+      "title": "RideContact",
+      "description": "Private participant phone numbers visible only to matched passenger, driver, and admin.",
+      "type": "object",
+      "properties": {
+        "passengerId": { "type": "string" },
+        "passengerPhone": { "type": "string" },
+        "driverId": { "type": "string" },
+        "driverPhone": { "type": "string" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["passengerId", "passengerPhone", "updatedAt"]
+    },
+    "RideStatusHistory": {
+      "title": "RideStatusHistory",
+      "description": "Immutable ride status transition log.",
+      "type": "object",
+      "properties": {
+        "rideId": { "type": "string" },
+        "fromStatus": { "type": "string" },
+        "toStatus": { "type": "string" },
+        "actorId": { "type": "string" },
+        "participantUids": { "type": "array" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["rideId", "fromStatus", "toStatus", "actorId", "participantUids", "createdAt"]
+    },
+    "FinancialTransaction": {
+      "title": "FinancialTransaction",
+      "description": "Completed ride financial record with platform commission and driver net earnings.",
+      "type": "object",
+      "properties": {
+        "rideId": { "type": "string" },
+        "driverId": { "type": "string" },
+        "passengerId": { "type": "string" },
+        "cityId": { "type": "string" },
+        "grossFareEgp": { "type": "number" },
+        "commissionRatePercent": { "type": "number" },
+        "commissionAmountEgp": { "type": "number" },
+        "driverNetEgp": { "type": "number" },
+        "paymentMethod": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["rideId", "driverId", "passengerId", "cityId", "grossFareEgp", "commissionRatePercent", "commissionAmountEgp", "driverNetEgp", "paymentMethod", "createdAt"]
+    },
+    "CommissionRule": {
+      "title": "CommissionRule",
+      "description": "Platform commission percentage configured by administrators.",
+      "type": "object",
+      "properties": {
+        "commissionRatePercent": { "type": "number" },
+        "updatedBy": { "type": "string" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["commissionRatePercent", "updatedBy", "updatedAt"]
+    },
+    "Complaint": {
+      "title": "Complaint",
+      "description": "User ride dispute or complaint reviewed by admins.",
+      "type": "object",
+      "properties": {
+        "rideId": { "type": "string" },
+        "reporterId": { "type": "string" },
+        "reporterName": { "type": "string" },
+        "reason": { "type": "string" },
+        "status": { "type": "string", "enum": ["open", "resolved", "dismissed"] },
+        "adminNote": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["rideId", "reporterId", "reporterName", "reason", "status", "createdAt", "updatedAt"]
+    },
+    "AdminAuditLog": {
+      "title": "AdminAuditLog",
+      "description": "Administrative action audit log.",
+      "type": "object",
+      "properties": {
+        "adminId": { "type": "string" },
+        "adminEmail": { "type": "string" },
+        "action": { "type": "string" },
+        "targetId": { "type": "string" },
+        "details": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["adminId", "adminEmail", "action", "targetId", "details", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": { "$ref": "#/entities/UserProfile" },
+      "description": "Private user profiles indexed by Firebase Auth UID."
+    },
+    "/users/{userId}/saved_places/{placeId}": {
+      "schema": { "$ref": "#/entities/SavedFavoritePlace" },
+      "description": "Cloud-synced favorite Dayrout places belonging to the user."
+    },
+    "/driver_profiles/{driverId}": {
+      "schema": { "$ref": "#/entities/DriverProfile" },
+      "description": "Driver registration records, documents, approval state, and earnings totals."
+    },
+    "/driver_presence/{driverId}": {
+      "schema": { "$ref": "#/entities/DriverPresence" },
+      "description": "Live non-PII online driver coordinates in Dayrout."
+    },
+    "/rides/{rideId}": {
+      "schema": { "$ref": "#/entities/Ride" },
+      "description": "Ride requests, agreed fares, and lifecycle state."
+    },
+    "/rides/{rideId}/offers/{offerId}": {
+      "schema": { "$ref": "#/entities/RideOffer" },
+      "description": "Driver offers and counteroffers for a ride."
+    },
+    "/rides/{rideId}/private/{docId}": {
+      "schema": { "$ref": "#/entities/RideContact" },
+      "description": "Participant phone numbers isolated from public ride search."
+    },
+    "/rides/{rideId}/status_history/{eventId}": {
+      "schema": { "$ref": "#/entities/RideStatusHistory" },
+      "description": "Audit log of ride status transitions."
+    },
+    "/financial_transactions/{txId}": {
+      "schema": { "$ref": "#/entities/FinancialTransaction" },
+      "description": "Completed ride commission and driver net earnings ledger."
+    },
+    "/config/{docId}": {
+      "schema": { "$ref": "#/entities/CommissionRule" },
+      "description": "Platform configuration including commission rules."
+    },
+    "/complaints/{complaintId}": {
+      "schema": { "$ref": "#/entities/Complaint" },
+      "description": "Ride complaints and disputes."
+    },
+    "/admin_audit_logs/{logId}": {
+      "schema": { "$ref": "#/entities/AdminAuditLog" },
+      "description": "Immutable administrative audit logs."
+    }
+  }
+}

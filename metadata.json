@@ -1,0 +1,6 @@
+{
+  "name": "D-RIDE",
+  "description": "تطبيق D-RIDE للنقل الذكي بالسعر المقترح في ديروط، أسيوط - مصر",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
