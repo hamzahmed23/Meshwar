@@ -226,6 +226,17 @@
         "createdAt": { "type": "string", "format": "date-time" }
       },
       "required": ["adminId", "adminEmail", "action", "targetId", "details", "createdAt"]
+    },
+    "AdminRecord": {
+      "title": "AdminRecord",
+      "description": "Explicit administrator UID registry entry granting admin dashboard privileges.",
+      "type": "object",
+      "properties": {
+        "adminId": { "type": "string" },
+        "email": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["adminId"]
     }
   },
   "firestore": {
@@ -236,6 +247,10 @@
     "/users/{userId}/saved_places/{placeId}": {
       "schema": { "$ref": "#/entities/SavedFavoritePlace" },
       "description": "Cloud-synced favorite Dayrout places belonging to the user."
+    },
+    "/admins/{adminId}": {
+      "schema": { "$ref": "#/entities/AdminRecord" },
+      "description": "Administrator registry indexed by Firebase Auth UID."
     },
     "/driver_profiles/{driverId}": {
       "schema": { "$ref": "#/entities/DriverProfile" },
